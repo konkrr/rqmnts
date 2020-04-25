@@ -2,9 +2,8 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js">
-<!--<![endif]-->
+<!--[if gt IE 8]>-->
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -49,43 +48,46 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container-fluid">
-            <h3>Requirement analazer <span class="badge badge-danger">beta</span></h3>
-            <p>Помогает очистить требования от ошибок и  словесного мусора</p>
-        </div>
+    <br>
+    <div class="container-fluid">
+        <h1 class="display-4"><strong>Requirement analazer</strong></h1>
+        <p class="lead">Помогает очистить требования от ошибок и словесного мусора <span class="badge badge-danger">beta</span></p>
     </div>
 
+    <br>
+    <br>
     <div class="container-fluid">
-        <form>
+        <form> 
             <div class="form-row glyphicon-object-align-left">
                 <div class="col-md-8">
                     <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="16"></textarea>
                     </div>
                     <p><a class="btn btn-primary btn-lg" href="#" role="button">Отправить</a></p>
                 </div>
-                <div class="col-auto">
-                    <h4>Heading</h4>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                        mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-                        magna mollis euismod. Donec sed odio dui. </p>
+                <div class="col-md-4">
+                    <p><span class="text-danger" font-size: 2rem;>4,9</span>&nbsp;<span class="font-weight-light">баллов из 10</span></p>
+                    <p class="font-weight-light">22 предложения <br> 372 слова <br> 90 стоп-слов</p>
+                    <h5>Основные проблемы</h5>
+                    <p>
+                        <em><span class="badge-info">Усилители</span></em>,&nbsp;
+                        <em><span class="badge-info">Неопределенное выражение</span></em>,&nbsp;
+                        <em><span class="badge-info">Обобщение</span></em>,&nbsp;
+                        <em><span class="badge-info">Личная оценка</span></em>,&nbsp;
+                        <em><span class="badge-info">Необъективная оценка</span></em>,&nbsp;
+                        <em><span class="badge-info">Паразит времени</span></em>,&nbsp;
+                    </p>
                 </div>
             </div>
         </form>
 
         <hr>
 
-    </div> 
+    </div>
 
 
-
-
-
-
-
-
-    <div id="app">
+<!--
+    <div id="app" class="container-fluid">
         <div data-reactroot="">
             <div class="two-columns">
                 <div class="column-left" style="pointer-events: none;"></div>
@@ -114,127 +116,16 @@
                                 <p><br></p>
                             </div>
                         </div>
+-->
 
 
 
-
-                        <div class="stats">
-                            <div class="stats-score-div"><span class="stats-score -red">4,9</span><span
-                                    class="stats-score-suffix">баллов</span><!-- react-text: 67 --> из 10
-                                <!-- /react-text --><br><!-- react-text: 69 -->по шкале Главреда
-                                <!-- /react-text -->
-                            </div>
-                            <div class="stats-text-div"><span class="stats-sentences">22</span>
-                                <!-- react-text: 72 -->&nbsp;
-                                <!-- /react-text --><span class="stats-sentences-suffix">предложения</span><br><span
-                                    class="stats-words">372</span><!-- react-text: 76 -->&nbsp;
-                                <!-- /react-text --><span class="stats-words-suffix">слова</span>
-                                <!-- react-text: 78 -->,&nbsp;
-                                <!-- /react-text --><span class="stats-chars">2550</span><!-- react-text: 80 -->&nbsp;
-                                <!-- /react-text --><span class="stats-chars-suffix">знаков</span></div>
-                            <div class="stats-result-div"><span class="stats-stopwords">90</span>
-                                <!-- react-text: 84 -->&nbsp;
-                                <!-- /react-text --><span class="stats-stopwords-suffix">стоп-слов</span>
-                                <!-- react-text: 86 -->.
-                                <!-- /react-text --><span class="stats-sections-prefix">
-                                    <!-- react-text: 95 -->Основные проблемы
-                                    <!-- /react-text -->
-                                    <!-- react-text: 96 -->:
-                                    <!-- /react-text --></span><!-- react-text: 87 -->
-                                <!-- /react-text --><span class="stats-sections"><em class="red"
-                                        data-section="усилитель">усилитель</em><!-- react-text: 98 -->
-                                    <!-- /react-text --><em class="orange"
-                                        data-section="неопределенное">неопределенное</em>
-                                    <!-- react-text: 100 -->
-                                    <!-- /react-text --><em class="red" data-section="рекламный штамп">рекламный
-                                        штамп</em><!-- react-text: 102 -->
-                                    <!-- /react-text --><em class="orange" data-section="обобщение">обобщение</em>
-                                    <!-- react-text: 104 -->
-                                    <!-- /react-text --><em class="red" data-section="газетный штамп">газетный
-                                        штамп</em><!-- react-text: 106 -->
-                                    <!-- /react-text --><em class="orange" data-section="личное местоимение">личное
-                                        местоимение</em><!-- react-text: 108 -->
-                                    <!-- /react-text --><em class="orange" data-section="предлог «от»">предлог «от»</em>
-                                    <!-- react-text: 110 -->
-                                    <!-- /react-text --><em class="red" data-section="паразит времени">паразит
-                                        времени</em><!-- react-text: 112 -->
-                                    <!-- /react-text --><em class="red"
-                                        data-section="необъективная оценка">необъективная
-                                        оценка</em>
-                                    <!-- react-text: 114 -->
-                                    <!-- /react-text --><em class="blue" data-section=""></em><!-- react-text: 116 -->
-                                    <!-- /react-text --><em class="red" data-section="бытовой штамп">бытовой штамп</em>
-                                    <!-- react-text: 118 -->
-                                    <!-- /react-text --></span></div><br class="clear">
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="column-right">
-                    <div class="sidebar">
-                        <div class="rule" style="margin-top: 331.618px;">
-                            <div>
-                                <div class="rule-desc">
-                                    <h1>Газетный штамп</h1>
-
-
-
-                                    <div class="rule-description">Читателю трудно прорываться сквозь статью, в которой
-                                        много подобных фраз</div>
-
-
-
-
-
-                                    <h2>См. также</h2>
-                                    <ul class="see-also">
-                                        <li><a href="http://artgorbunov.ru/bb/soviet/20131117/">Совет о клише</a></li>
-                                        <li><a href="http://maximilyahov.ru/blog/?go=all/bullshit/">Брехня</a></li>
-                                        <li><a href="http://maximilyahov.ru/blog/?go=all/figure-of-speech/">Для красного
-                                                словца</a></li>
-                                        <li><a href="http://maximilyahov.ru/blog/all/tinkoff-bootcamp-5/">Как быть
-                                                автором с его индивидуальным неповторимым стилем</a></li>
-                                    </ul>
-                                </div>
-                            </div><br>
-                        </div>
-                    </div>
-                </div>
-
-                <!--
-                 <div class="column-right">
-                     <div class="sidebar">
-                        <div class="tutorial -visible">
-                            <p>Вставьте текст на&nbsp;русском языке.</p>
-                            <p>Ещё не&nbsp;написали?</p>
-                            <p><button class="large-button">Вставить пример</button></p><br>
-                            <p>Подходит для&nbsp;рекламы, новостей, статей, сайтов, инструкций, писем
-                            и&nbsp;коммерческих предложений.</p>
-                            <p>
-                                <nobr>СМС-диет.</nobr>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                -->
-
-
-
-            </div>
-        </div>
+    <div class="container-fluid">
+        <p>По всем вопросам пишите:&nbsp;<a href="mailto:kkrashenitsa@gmail.com">mail@rqmnts.ru</a></p>
     </div>
 
 
 
-
-
-    <footer id="rqmnt-footer" class="rqmnt-footer">
-        <div class="footer" style="font-size: 90%;">
-            Пишите:&nbsp;<a href="mailto:kkrashenitsa@gmail.com">mail@rqmnts.ru</a>
-        </div>
-        </div>
-    </footer>
 </body>
 
 </html>
