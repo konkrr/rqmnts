@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Requirement analyzer</title>
+    <meta name="description" content="Помогает очистить требования от ошибок и  словесного мусора">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="canonical" href="https://rqmnts.ru/">
+    <meta property="og:url" content="https://rqmnts.ru/">
+    <meta property="og:title" content="Requirement analyzer">
+    <meta property="og:site_name" content="Requirement analyzer">
+    <meta property="og:description" content="Помогает очистить требования от ошибок и  словесного мусора">
+    <meta property="og:image" content="https://rqmnts.ru/static/opengraph.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="310">
+    <meta property="og:image:height" content="310">
+
+    <link rel="icon" type="image/png" href="/static/favicons/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="/static/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/static/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/static/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/static/favicons/favicon-128.png" sizes="128x128">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="js/webflow.js" type="text/javascript"></script>
+
+    <script>window.GLVRD_API_URL = '/api/';</script>
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <header id="rqmnt-header" class="rqmnt-header">
+        <h2>Requirement analazer</h2>
+        <p>Проверяй тексты и требования в html</p>
+    </header>
+
+    <section id="rqmnt-form" class="rqmnt-form">
+        <div class="rqmnt w-container">
+            <div class="w-form">
+                <form id="wf-form-rqmnt-form" name="wf-form-rqmnt-form" data-name="Requirement Form"
+                    class="wf-form-rqmnt-form">
+                    <div class="rqmnt-form-grid">
+                        <div id="w-node-1" class="w-node-1"><textarea data-name="Message" id="Message" maxlength="5000"
+                                name="Message" required="" autofocus="true" class="textarea w-input"></textarea></div>
+                        <div id="w-node-2" class="w-node-2">
+                            <h4>Название проблемы</h4>
+                            <p>Описание проблемы</p>
+                        </div>
+                    </div>
+                    <input type="submit" value="Отправить" data-wait="Please wait..." class="submit-button w-button">
+                </form>
+                <div class="w-form-done">
+                    <div>Your requirements has been recieved!</div>
+                </div>
+                <div class="w-form-fail">
+                    <div>Oops! Something went wrong!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div id="app">
+        <div data-reactroot="">
+            <div class="two-columns">
+                <div class="column-left" style="pointer-events: none;"></div>
+                <div class="column-right"></div>
+            </div>
+            <div style="height: 55px;"><br></div>
+            <div class="two-columns">
+                <div class="column-left">
+                    <div class="tabs"><span class="tab -selected"
+                            style="color: rgb(218, 87, 15); border-top-color: rgb(218, 87, 15);">Чистота</span><span
+                            class="tab"
+                            style="color: rgb(16, 128, 127); border-top-color: rgb(16, 128, 127);">Читаемость</span>
+                    </div>
+                    <div class="page">
+                        <div class="share -onboarding -start" style="">
+                            <div class="share-hint_1">Сохранить и поделиться</div>
+                            <div class="share-hint_2">На две недели</div><!-- react-text: 16 -->&nbsp;
+                            <!-- /react-text --><input class="share-input" value="" readonly="">
+                            <div class="share-icon">
+                                <div class="share-icon-arrow"><svg width="20" height="20">
+                                        <path d="M7,17 l0,-15 m-3,3 l3,-3 l3,3" fill="none" stroke="#fff"
+                                            stroke-width="3" stroke-linecap="round"></path>
+                                        <path d="M7,16 l0,-13 m-3,3 l3,-3 l3,3" class="svg-arrow" fill="none"
+                                            stroke="#ccc" stroke-width="1" stroke-linecap="round"></path>
+                                    </svg></div>
+                                <div class="share-icon-spinner"><svg width="12px" height="12px"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+                                        preserveAspectRatio="xMidYMid" class="uil-default">
+                                        <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
+                                        <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#999999"
+                                            transform="rotate(0 50 50) translate(0 -30)">
+                                            <!-- react-text: 27 -->
+                                            <!-- /react-text -->
+                                            <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0s"
+                                                repeatCount="indefinite"></animate>
+                                        </rect>
+                                        <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#999999"
+                                            transform="rotate(30 50 50) translate(0 -30)">
+                                            <!-- react-text: 30 -->
+                                            <!-- /react-text -->
+                                            <animate attributeName="opacity" from="1" to="0" dur="1s"
+                                                begin="0.08333333333333333s" repeatCount="indefinite"></animate>
+                                        </rect>
+                                        <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#999999"
+                                            transform="rotate(60 50 50) translate(0 -30)">
+                                            <!-- react-text: 33 -->
+                                            <!-- /react-text -->
+                                            <animate attributeName="opacity" from="1" to="0" dur="1s"
+                                                begin="0.16666666666666666s" repeatCount="indefinite"></animate>
+                                        </rect>
+                                        <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#999999"
+                                            transform="rotate(90 50 50) translate(0 -30)">
+                                            <!-- react-text: 36 -->
+                                            <!-- /react-text -->
+                                            <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.25s"
+                                                repeatCount="indefinite"></animate>
+                                        </rect>
+                                        <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#999999"
+                                            transform="rotate(120 50 50) translate(0 -30)">
+                                            <!-- react-text: 39 -->
+                                            <!-- /react-text -->
+                                            <animate attributeName="opacity" from="1" to="0" dur="1s"
+                                                begin="0.3333333333333333s" repeatCount="indefinite"></animate>
+                                        </rect>
+                                        <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#999999"
+                                            transform="rotate(150 50 50) translate(0 -30)">
+                                            <!-- react-text: 42 -->
+                                            <!-- /react-text -->
+                                            <animate attributeName="opacity" from="1" to="0" dur="1s"
+                                                begin="0.4166666666666667s" repeatCount="indefinite"></animate>
+                                        </rect>
+                                        <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#999999"
+                                            transform="rotate(180 50 50) translate(0 -30)">
+                                            <!-- react-text: 45 -->
+                                            <!-- /react-text -->
+                                            <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.5s"
+                                                repeatCount="indefinite"></animate>
+                                        </rect>
+                                        <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#999999"
+                                            transform="rotate(210 50 50) translate(0 -30)">
+                                            <!-- react-text: 48 -->
+                                            <!-- /react-text -->
+                                            <animate attributeName="opacity" from="1" to="0" dur="1s"
+                                                begin="0.5833333333333334s" repeatCount="indefinite"></animate>
+                                        </rect>
+                                        <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#999999"
+                                            transform="rotate(240 50 50) translate(0 -30)">
+                                            <!-- react-text: 51 -->
+                                            <!-- /react-text -->
+                                            <animate attributeName="opacity" from="1" to="0" dur="1s"
+                                                begin="0.6666666666666666s" repeatCount="indefinite"></animate>
+                                        </rect>
+                                        <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#999999"
+                                            transform="rotate(270 50 50) translate(0 -30)">
+                                            <!-- react-text: 54 -->
+                                            <!-- /react-text -->
+                                            <animate attributeName="opacity" from="1" to="0" dur="1s" begin="0.75s"
+                                                repeatCount="indefinite"></animate>
+                                        </rect>
+                                        <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#999999"
+                                            transform="rotate(300 50 50) translate(0 -30)">
+                                            <!-- react-text: 57 -->
+                                            <!-- /react-text -->
+                                            <animate attributeName="opacity" from="1" to="0" dur="1s"
+                                                begin="0.8333333333333334s" repeatCount="indefinite"></animate>
+                                        </rect>
+                                        <rect x="46.5" y="40" width="7" height="20" rx="5" ry="5" fill="#999999"
+                                            transform="rotate(330 50 50) translate(0 -30)">
+                                            <!-- react-text: 60 -->
+                                            <!-- /react-text -->
+                                            <animate attributeName="opacity" from="1" to="0" dur="1s"
+                                                begin="0.9166666666666666s" repeatCount="indefinite"></animate>
+                                        </rect>
+                                    </svg></div>
+                            </div>
+                        </div>
+                        <div id="glaveditor-id" class="ql-glaveditor ql-container">
+                            <div class="ql-editor" contenteditable="true">
+                                <p>Кому не знакома боль в спине Это, <em class="hint" data-style="red">безусловно</em>,
+                                    <em class="hint" data-style="orange">одна из главных</em> проблем <em class="hint"
+                                        data-style="red">современного человека</em>. Доктора <em class="hint"
+                                        data-style="orange">со всего мира</em> <em class="hint" data-style="red">ломают
+                                        голову</em> над вопросом, как избавить <em class="hint"
+                                        data-style="orange">нас</em>
+                                    <em class="hint" data-style="orange">от</em> этой
+                                    <em class="hint" data-style="red">напасти</em> И <em class="hint"
+                                        data-style="red">до
+                                        недавнего времени</em> <em class="hint" data-style="red">казалось,</em> что
+                                    наука
+                                    бессильна: сколько копий было сломано,
+                                    и ни одного <em class="hint" data-style="red">абсолютно</em> <em class="hint"
+                                        data-style="red">эффективного</em> средства так и не было найдено!</p>
+                                <p><br></p>
+                                <p>Но теперь <em class="hint" data-style="orange">все</em> изменилось! <em class="hint"
+                                        data-style="red">Британские ученые</em> разработали <em class="hint"
+                                        data-style="red">новейший</em> <em class="hint"
+                                        data-style="red">суперэффективный</em> метод лечения болей в спине. Представляем
+                                    спорт!</p>
+                                <p><br></p>
+                                <p>Спорт — это <em class="hint" data-style="red">уникальный</em> метод решения проблем
+                                    со здоровьем с доказанной <em class="hint" data-style="red">стопроцентной</em> <em
+                                        class="hint" data-style="red">эффективностью</em>!</p>
+                                <p><br></p>
+                                <p>Спорт доступен каждому! Спортом <em class="hint" data-style="blue">может
+                                        заниматься</em> кто угодно: будь то неуверенный в себе подросток или <em
+                                        class="hint" data-style="red">успешный</em> предприниматель. </p>
+                                <p><br></p>
+                                <p>Спорт подарит <em class="hint" data-style="orange">вам</em> <em class="hint"
+                                        data-style="red">прилив сил и энергии</em> на <em class="hint"
+                                        data-style="orange">весь</em> день! Это занятие <em class="hint"
+                                        data-style="red">для всей семьи</em>, которое <em class="hint -highlighted"
+                                        data-style="red">не оставит равнодушным</em> никого, <em class="hint"
+                                        data-style="orange">от</em> <em class="hint" data-style="red">мала до
+                                        велика</em>!</p>
+                                <p><br></p>
+                                <p>Попробуйте спорт <em class="hint" data-style="red">прямо</em> <em class="hint"
+                                        data-style="red">сейчас</em>!</p>
+                                <p>Кому не знакома боль в спине Это, <em class="hint" data-style="red">безусловно</em>,
+                                    <em class="hint" data-style="orange">одна из главных</em> проблем <em class="hint"
+                                        data-style="red">современного человека</em>. Доктора <em class="hint"
+                                        data-style="orange">со всего мира</em> <em class="hint" data-style="red">ломают
+                                        голову</em> над вопросом, как избавить <em class="hint"
+                                        data-style="orange">нас</em>
+                                    <em class="hint" data-style="orange">от</em> этой
+                                    <em class="hint" data-style="red">напасти</em> И <em class="hint"
+                                        data-style="red">до
+                                        недавнего времени</em> <em class="hint" data-style="red">казалось,</em> что
+                                    наука
+                                    бессильна: сколько копий было сломано,
+                                    и ни одного <em class="hint" data-style="red">абсолютно</em> <em class="hint"
+                                        data-style="red">эффективного</em> средства так и не было найдено!</p>
+                                <p><br></p>
+                                <p>Но теперь <em class="hint" data-style="orange">все</em> изменилось! <em class="hint"
+                                        data-style="red">Британские ученые</em> разработали <em class="hint"
+                                        data-style="red">новейший</em> <em class="hint"
+                                        data-style="red">суперэффективный</em> метод лечения болей в спине. Представляем
+                                    спорт!</p>
+                                <p><br></p>
+                                <p>Спорт — это <em class="hint" data-style="red">уникальный</em> метод решения проблем
+                                    со здоровьем с доказанной <em class="hint" data-style="red">стопроцентной</em> <em
+                                        class="hint" data-style="red">эффективностью</em>!</p>
+                                <p><br></p>
+                                <p>Спорт доступен каждому! Спортом <em class="hint" data-style="blue">может
+                                        заниматься</em> кто угодно: будь то неуверенный в себе подросток или <em
+                                        class="hint" data-style="red">успешный</em> предприниматель.&nbsp;</p>
+                                <p><br></p>
+                                <p>Спорт подарит <em class="hint" data-style="orange">вам</em> <em class="hint"
+                                        data-style="red">прилив сил и энергии</em> на <em class="hint"
+                                        data-style="orange">весь</em> день! Это занятие <em class="hint"
+                                        data-style="red">для всей семьи</em>, которое <em class="hint -highlighted"
+                                        data-style="red">не оставит равнодушным</em> никого, <em class="hint"
+                                        data-style="orange">от</em> <em class="hint" data-style="red">мала до
+                                        велика</em>!</p>
+                                <p><br></p>
+                                <p>Попробуйте спорт <em class="hint" data-style="red">прямо</em> <em class="hint"
+                                        data-style="red">сейчас</em>!</p>
+                                <p>Кому не знакома боль в спине Это, <em class="hint" data-style="red">безусловно</em>,
+                                    <em class="hint" data-style="orange">одна из главных</em> проблем <em class="hint"
+                                        data-style="red">современного человека</em>. Доктора <em class="hint"
+                                        data-style="orange">со всего мира</em> <em class="hint" data-style="red">ломают
+                                        голову</em> над вопросом, как избавить <em class="hint"
+                                        data-style="orange">нас</em>
+                                    <em class="hint" data-style="orange">от</em> этой
+                                    <em class="hint" data-style="red">напасти</em> И <em class="hint"
+                                        data-style="red">до
+                                        недавнего времени</em> <em class="hint" data-style="red">казалось,</em> что
+                                    наука
+                                    бессильна: сколько копий было сломано,
+                                    и ни одного <em class="hint" data-style="red">абсолютно</em> <em class="hint"
+                                        data-style="red">эффективного</em> средства так и не было найдено!</p>
+                                <p><br></p>
+                                <p>Но теперь <em class="hint" data-style="orange">все</em> изменилось! <em class="hint"
+                                        data-style="red">Британские ученые</em> разработали <em class="hint"
+                                        data-style="red">новейший</em> <em class="hint"
+                                        data-style="red">суперэффективный</em> метод лечения болей в спине. Представляем
+                                    спорт!</p>
+                                <p><br></p>
+                                <p>Спорт — это <em class="hint" data-style="red">уникальный</em> метод решения проблем
+                                    со здоровьем с доказанной <em class="hint" data-style="red">стопроцентной</em> <em
+                                        class="hint" data-style="red">эффективностью</em>!</p>
+                                <p><br></p>
+                                <p>Спорт доступен каждому! Спортом <em class="hint" data-style="blue">может
+                                        заниматься</em> кто угодно: будь то неуверенный в себе подросток или <em
+                                        class="hint" data-style="red">успешный</em> предприниматель.&nbsp;</p>
+                                <p><br></p>
+                                <p>Спорт подарит <em class="hint" data-style="orange">вам</em> <em class="hint"
+                                        data-style="red">прилив сил и энергии</em> на <em class="hint"
+                                        data-style="orange">весь</em> день! Это занятие <em class="hint"
+                                        data-style="red">для всей семьи</em>, которое <em class="hint -highlighted"
+                                        data-style="red">не оставит равнодушным</em> никого, <em class="hint"
+                                        data-style="orange">от</em> <em class="hint" data-style="red">мала до
+                                        велика</em>!</p>
+                                <p><br></p>
+                                <p>Попробуйте спорт <em class="hint" data-style="red">прямо</em> <em class="hint"
+                                        data-style="red">сейчас</em>!</p>
+                            </div>
+                            <div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
+                        </div>
+                        <div class="stats">
+                            <div class="stats-score-div"><span class="stats-score -red">4,9</span><span
+                                    class="stats-score-suffix">баллов</span><!-- react-text: 67 --> из 10
+                                <!-- /react-text --><br><!-- react-text: 69 -->по шкале Главреда
+                                <!-- /react-text -->
+                            </div>
+                            <div class="stats-text-div"><span class="stats-sentences">22</span>
+                                <!-- react-text: 72 -->&nbsp;
+                                <!-- /react-text --><span class="stats-sentences-suffix">предложения</span><br><span
+                                    class="stats-words">372</span><!-- react-text: 76 -->&nbsp;
+                                <!-- /react-text --><span class="stats-words-suffix">слова</span>
+                                <!-- react-text: 78 -->,&nbsp;
+                                <!-- /react-text --><span class="stats-chars">2550</span><!-- react-text: 80 -->&nbsp;
+                                <!-- /react-text --><span class="stats-chars-suffix">знаков</span></div>
+                            <div class="stats-result-div"><span class="stats-stopwords">90</span>
+                                <!-- react-text: 84 -->&nbsp;
+                                <!-- /react-text --><span class="stats-stopwords-suffix">стоп-слов</span>
+                                <!-- react-text: 86 -->.
+                                <!-- /react-text --><span class="stats-sections-prefix">
+                                    <!-- react-text: 95 -->Основные проблемы
+                                    <!-- /react-text -->
+                                    <!-- react-text: 96 -->:
+                                    <!-- /react-text --></span><!-- react-text: 87 -->
+                                <!-- /react-text --><span class="stats-sections"><em class="red"
+                                        data-section="усилитель">усилитель</em><!-- react-text: 98 -->
+                                    <!-- /react-text --><em class="orange"
+                                        data-section="неопределенное">неопределенное</em>
+                                    <!-- react-text: 100 -->
+                                    <!-- /react-text --><em class="red" data-section="рекламный штамп">рекламный
+                                        штамп</em><!-- react-text: 102 -->
+                                    <!-- /react-text --><em class="orange" data-section="обобщение">обобщение</em>
+                                    <!-- react-text: 104 -->
+                                    <!-- /react-text --><em class="red" data-section="газетный штамп">газетный
+                                        штамп</em><!-- react-text: 106 -->
+                                    <!-- /react-text --><em class="orange" data-section="личное местоимение">личное
+                                        местоимение</em><!-- react-text: 108 -->
+                                    <!-- /react-text --><em class="orange" data-section="предлог «от»">предлог «от»</em>
+                                    <!-- react-text: 110 -->
+                                    <!-- /react-text --><em class="red" data-section="паразит времени">паразит
+                                        времени</em><!-- react-text: 112 -->
+                                    <!-- /react-text --><em class="red"
+                                        data-section="необъективная оценка">необъективная
+                                        оценка</em>
+                                    <!-- react-text: 114 -->
+                                    <!-- /react-text --><em class="blue" data-section=""></em><!-- react-text: 116 -->
+                                    <!-- /react-text --><em class="red" data-section="бытовой штамп">бытовой штамп</em>
+                                    <!-- react-text: 118 -->
+                                    <!-- /react-text --></span></div><br class="clear">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="column-right">
+                    <div class="sidebar">
+                        <div class="rule" style="margin-top: 331.618px;">
+                            <div>
+                                <div class="rule-desc">
+                                    <h1>Газетный штамп</h1>
+
+
+
+                                    <div class="rule-description">Читателю трудно прорываться сквозь статью, в которой
+                                        много подобных фраз</div>
+
+
+
+
+
+                                    <h2>См. также</h2>
+                                    <ul class="see-also">
+                                        <li><a href="http://artgorbunov.ru/bb/soviet/20131117/">Совет о клише</a></li>
+                                        <li><a href="http://maximilyahov.ru/blog/?go=all/bullshit/">Брехня</a></li>
+                                        <li><a href="http://maximilyahov.ru/blog/?go=all/figure-of-speech/">Для красного
+                                                словца</a></li>
+                                        <li><a href="http://maximilyahov.ru/blog/all/tinkoff-bootcamp-5/">Как быть
+                                                автором с его индивидуальным неповторимым стилем</a></li>
+                                    </ul>
+                                </div>
+                            </div><br>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                 <div class="column-right">
+                     <div class="sidebar">
+                        <div class="tutorial -visible">
+                            <p>Вставьте текст на&nbsp;русском языке.</p>
+                            <p>Ещё не&nbsp;написали?</p>
+                            <p><button class="large-button">Вставить пример</button></p><br>
+                            <p>Подходит для&nbsp;рекламы, новостей, статей, сайтов, инструкций, писем
+                            и&nbsp;коммерческих предложений.</p>
+                            <p>
+                                <nobr>СМС-диет.</nobr>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                -->
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <footer id="rqmnt-footer" class="rqmnt-footer">
+        <div class="footer" style="font-size: 90%;">
+            Пишите:&nbsp;<a href="mailto:kkrashenitsa@gmail.com">mail@rqmnts.ru</a>
+        </div>
+        </div>
+    </footer>
+</body>
+
+</html>
