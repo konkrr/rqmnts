@@ -13,3 +13,5 @@
 
 
 https://thecode.media/todo/ 
+
+http://maximilyahov.ru/blog/all/the-checklist/
