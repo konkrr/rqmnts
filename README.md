@@ -15,3 +15,11 @@
 https://thecode.media/todo/ 
 
 http://maximilyahov.ru/blog/all/the-checklist/
+
+https://litera5.ru/library/OGL/litera5.api.v1.html
+
+https://github.com/orfogrammatika/litera5-api-js-client
+
+https://github.com/orfogrammatika/litera5-api-css-themes
+
+https://github.com/orfogrammatika/litera5-api-php-client
